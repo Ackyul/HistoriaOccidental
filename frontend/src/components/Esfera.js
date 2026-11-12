@@ -43,12 +43,18 @@ export default function Esfera({ onCambio }) {
   const [saliendo, setSaliendo] = useState(false);
   const max = Math.max(anios.length - 1, 0);
 
+  // Next conserva /mapa oculto al navegar a otra sección; al volver los efectos
+  // se ejecutan de nuevo, así que aquí se limpia el estado de salida.
   useEffect(() => {
     function onOcultar() {
       setSaliendo(true);
     }
     window.addEventListener("ocultar-esfera", onOcultar);
-    return () => window.removeEventListener("ocultar-esfera", onOcultar);
+    const reset = setTimeout(() => setSaliendo(false), 0);
+    return () => {
+      clearTimeout(reset);
+      window.removeEventListener("ocultar-esfera", onOcultar);
+    };
   }, []);
 
   function mover(paso) {
