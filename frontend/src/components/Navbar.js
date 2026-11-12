@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const secciones = [
-  { nombre: "Home", href: "/experiencia" },
+  { nombre: "Home", href: "/" },
   null,
   null,
   null,
