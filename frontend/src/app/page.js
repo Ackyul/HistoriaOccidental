@@ -7,7 +7,7 @@ export default function Home() {
       <Pizarra>
         <div className="flex h-full items-center justify-center">
           <Link
-            href="/experiencia"
+            href="/mapa"
             className="border border-foreground px-6 py-3 font-serif text-lg tracking-wide transition-colors hover:bg-foreground hover:text-background"
           >
             Pasar a la experiencia interactiva

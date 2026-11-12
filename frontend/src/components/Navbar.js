@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const secciones = [
   { nombre: "Home", href: "/" },
-  null,
+  { nombre: "Mapa", href: "/mapa" },
   null,
   null,
   null,
