@@ -69,10 +69,10 @@ export default function Pizarra({ children, base }) {
       <svg width="0" height="0" className="absolute">
         <defs>
           <linearGradient id="oro" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#f6dd8a" />
-            <stop offset="0.45" stopColor="#c9963a" />
-            <stop offset="0.7" stopColor="#8f6420" />
-            <stop offset="1" stopColor="#e7c463" />
+            <stop offset="0" stopColor="#d4181f" />
+            <stop offset="0.45" stopColor="#d4181f" />
+            <stop offset="0.7" stopColor="#8f0f14" />
+            <stop offset="1" stopColor="#ff4a50" />
           </linearGradient>
         </defs>
       </svg>

@@ -44,7 +44,7 @@ export default function Esfera({ onCambio }) {
 
       <div className="pz-domo">
         <svg className="pz-disco" viewBox="-100 -100 200 200">
-          <circle r="97" fill="#5a3720" />
+          <circle r="97" fill="#231f20" />
           {[-67.5, 67.5].map((g) => (
             <g key={g}>
               <circle cx={cos(g) * 72} cy={sin(g) * 72} r="3.2" fill="url(#oro)" />

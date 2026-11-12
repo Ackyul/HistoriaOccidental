@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #efe8da;
-  --foreground: #2b2620;
+  --background: #f1e7d0;
+  --foreground: #231f20;
 }
 
 @theme inline {
@@ -26,10 +26,10 @@ body {
   height: 100dvh;
   padding: var(--grosor);
   overflow: hidden;
-  background-color: #5a3720;
+  background-color: #231f20;
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='500'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.11' numOctaves='3' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 0.14 0 0 0 0 0.07 0 0 0 0 0.03 0 0 0 0.75 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
-    linear-gradient(180deg, #74492b 0%, #5a3720 45%, #4b2d19 100%);
+    linear-gradient(180deg, #2e2829 0%, #231f20 45%, #1a1718 100%);
   background-size: 700px 500px, 100% 100%;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
 }
@@ -39,14 +39,14 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #fbfaf7;
-  box-shadow: 0 0 0 1.5px #c9963a;
+  background-color: #f1e7d0;
+  box-shadow: 0 0 0 1.5px #d4181f;
 }
 
 .pz-filete {
   position: absolute;
   inset: clamp(8px, 1.4vw, 16px);
-  border: 1px solid rgba(201, 150, 58, 0.35);
+  border: 1px solid rgba(212, 24, 31, 0.35);
   pointer-events: none;
 }
 
@@ -87,7 +87,7 @@ body {
   width: clamp(9px, 1.1vw, 14px);
   height: clamp(9px, 1.1vw, 14px);
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #fbe7a6, #c9963a 45%, #6e4a16 100%);
+  background: radial-gradient(circle at 35% 30%, #ff6a70, #d4181f 45%, #6b0a0e 100%);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -145,19 +145,19 @@ body {
   height: var(--r);
   overflow: hidden;
   border-radius: var(--r) var(--r) 0 0;
-  box-shadow: 0 0 0 1px rgba(201, 150, 58, 0.5);
+  box-shadow: 0 0 0 1px rgba(212, 24, 31, 0.5);
   animation: pz-domo-pulso 1.15s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes pz-domo-pulso {
   0%, 45% {
-    box-shadow: 0 0 0 1px rgba(201, 150, 58, 0.35);
+    box-shadow: 0 0 0 1px rgba(212, 24, 31, 0.35);
   }
   78% {
-    box-shadow: 0 0 16px 2px rgba(246, 221, 138, 0.55), 0 0 0 1px rgba(246, 221, 138, 0.9);
+    box-shadow: 0 0 16px 2px rgba(212, 24, 31, 0.55), 0 0 0 1px rgba(212, 24, 31, 0.9);
   }
   100% {
-    box-shadow: 0 0 0 1px rgba(201, 150, 58, 0.5);
+    box-shadow: 0 0 0 1px rgba(212, 24, 31, 0.5);
   }
 }
 
@@ -191,7 +191,7 @@ body {
   font-variant-numeric: lining-nums tabular-nums;
   letter-spacing: 0.04em;
   line-height: 1;
-  color: #f0d48a;
+  color: #f1e7d0;
   white-space: nowrap;
   transition: transform 0.7s cubic-bezier(0.3, 0.7, 0.2, 1), opacity 0.45s;
 }
@@ -242,7 +242,7 @@ body {
 }
 
 .pz-flecha:focus-visible {
-  outline: 1px solid rgba(246, 221, 138, 0.6);
+  outline: 1px solid rgba(212, 24, 31, 0.6);
   outline-offset: 2px;
 }
 
@@ -290,24 +290,24 @@ body {
   font-size: clamp(13px, 1.3vw, 19px);
   letter-spacing: clamp(0.08em, 0.12vw, 0.14em);
   text-transform: uppercase;
-  color: #ead7a4;
+  color: #f1e7d0;
   padding: 4px 6px;
   transition: color 0.2s, text-shadow 0.2s;
   white-space: nowrap;
 }
 
 .pz-nav-item:hover {
-  color: #fff3d1;
-  text-shadow: 0 0 10px rgba(246, 221, 138, 0.4);
+  color: #d4181f;
+  text-shadow: 0 0 10px rgba(212, 24, 31, 0.4);
 }
 
 .pz-nav-item.activo {
-  color: #f6dd8a;
+  color: #d4181f;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 6px;
   font-weight: 500;
-  text-shadow: 0 0 8px rgba(246, 221, 138, 0.35);
+  text-shadow: 0 0 8px rgba(212, 24, 31, 0.35);
 }
 
 .pz-nav-sep {
@@ -340,8 +340,8 @@ body {
   min-height: 32px;
   max-height: 44px;
   padding: 0 clamp(10px, 3.5vw, 16px);
-  background: rgba(43, 25, 14, 0.55);
-  border: 1px solid rgba(201, 150, 58, 0.6);
+  background: rgba(35, 31, 32, 0.55);
+  border: 1px solid rgba(212, 24, 31, 0.6);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -350,9 +350,9 @@ body {
 
 .pz-nav-mobile-btn:hover,
 .pz-nav-mobile-btn:focus-visible {
-  background: rgba(43, 25, 14, 0.85);
-  border-color: #f6dd8a;
-  box-shadow: 0 0 8px rgba(246, 221, 138, 0.45);
+  background: rgba(35, 31, 32, 0.85);
+  border-color: #d4181f;
+  box-shadow: 0 0 8px rgba(212, 24, 31, 0.45);
   outline: none;
 }
 
@@ -364,7 +364,7 @@ body {
 
 .pz-nav-diamond {
   font-size: 11px;
-  color: #f6dd8a;
+  color: #d4181f;
   line-height: 1;
 }
 
@@ -373,7 +373,7 @@ body {
   font-size: clamp(13px, 3.6vw, 16px);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #f6dd8a;
+  color: #d4181f;
   font-weight: 500;
 }
 
@@ -397,7 +397,7 @@ body {
 .pz-nav-mobile-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(18, 10, 5, 0.65);
+  background: rgba(20, 17, 18, 0.65);
   backdrop-filter: blur(3px);
   animation: pz-fade-in 0.22s ease-out;
 }
@@ -407,12 +407,12 @@ body {
   width: min(88%, 320px);
   margin-top: 6px;
   background:
-    radial-gradient(circle at 50% 0%, #4a2914 0%, #2b170c 100%);
-  border: 1.5px solid #c9963a;
+    radial-gradient(circle at 50% 0%, #2e2829 0%, #231f20 100%);
+  border: 1.5px solid #d4181f;
   border-radius: 4px;
   box-shadow:
     0 16px 36px rgba(0, 0, 0, 0.75),
-    inset 0 0 0 1px rgba(246, 221, 138, 0.35);
+    inset 0 0 0 1px rgba(212, 24, 31, 0.35);
   padding: 18px 14px;
   animation: pz-menu-deslizar 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -440,7 +440,7 @@ body {
   gap: 8px;
   padding-bottom: 12px;
   margin-bottom: 10px;
-  border-bottom: 1px solid rgba(201, 150, 58, 0.3);
+  border-bottom: 1px solid rgba(212, 24, 31, 0.3);
 }
 
 .pz-nav-mobile-heading {
@@ -448,7 +448,7 @@ body {
   font-size: 13px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #f6dd8a;
+  color: #d4181f;
   font-weight: 500;
 }
 
@@ -467,7 +467,7 @@ body {
   font-size: 17px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #ead7a4;
+  color: #f1e7d0;
   border: 1px solid transparent;
   border-radius: 3px;
   transition: all 0.2s ease;
@@ -476,23 +476,23 @@ body {
 
 .pz-nav-mobile-link:hover,
 .pz-nav-mobile-link:focus-visible {
-  color: #fff3d1;
-  background: rgba(201, 150, 58, 0.16);
-  border-color: rgba(201, 150, 58, 0.45);
+  color: #d4181f;
+  background: rgba(212, 24, 31, 0.16);
+  border-color: rgba(212, 24, 31, 0.45);
   outline: none;
 }
 
 .pz-nav-mobile-link.activo {
-  color: #f6dd8a;
-  background: rgba(201, 150, 58, 0.25);
-  border-color: #c9963a;
+  color: #d4181f;
+  background: rgba(212, 24, 31, 0.25);
+  border-color: #d4181f;
   font-weight: 600;
-  box-shadow: inset 0 0 10px rgba(201, 150, 58, 0.2);
+  box-shadow: inset 0 0 10px rgba(212, 24, 31, 0.2);
 }
 
 .pz-nav-mobile-num {
   font-size: 13px;
-  color: #c9963a;
+  color: #d4181f;
   font-style: italic;
   min-width: 20px;
 }
