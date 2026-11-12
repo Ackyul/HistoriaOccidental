@@ -121,6 +121,11 @@ body {
   will-change: transform, opacity;
 }
 
+.pz-base.saliendo {
+  animation: pz-esfera-salir 0.42s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+  pointer-events: none;
+}
+
 @keyframes pz-esfera-entrar {
   0% {
     transform: translate(-50%, 140%);
@@ -135,6 +140,38 @@ body {
   100% {
     transform: translate(-50%, 0);
     opacity: 1;
+  }
+}
+
+@keyframes pz-esfera-salir {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 140%);
+    opacity: 0;
+  }
+}
+
+.pz-base.saliendo .pz-domo {
+  animation: none !important;
+  box-shadow: 0 0 0 1px rgba(212, 24, 31, 0.3);
+}
+
+.pz-base.saliendo .pz-flecha {
+  animation: pz-flecha-salir 0.35s ease-in forwards !important;
+}
+
+@keyframes pz-flecha-salir {
+  0% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

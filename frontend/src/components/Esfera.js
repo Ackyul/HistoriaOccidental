@@ -1,12 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { anios } from "@/data/anios";
 
 const PASO = 45;
 const rad = (g) => ((g - 90) * Math.PI) / 180;
 const cos = (g) => +Math.cos(rad(g)).toFixed(4);
 const sin = (g) => +Math.sin(rad(g)).toFixed(4);
+
+export function animarSalidaEsfera(onComplete) {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("ocultar-esfera"));
+    if (onComplete) {
+      setTimeout(onComplete, 420);
+    }
+  } else if (onComplete) {
+    onComplete();
+  }
+}
 
 function Flecha({ dir, onClick, disabled }) {
   return (
@@ -29,7 +40,16 @@ function Flecha({ dir, onClick, disabled }) {
 
 export default function Esfera({ onCambio }) {
   const [pos, setPos] = useState(0);
+  const [saliendo, setSaliendo] = useState(false);
   const max = Math.max(anios.length - 1, 0);
+
+  useEffect(() => {
+    function onOcultar() {
+      setSaliendo(true);
+    }
+    window.addEventListener("ocultar-esfera", onOcultar);
+    return () => window.removeEventListener("ocultar-esfera", onOcultar);
+  }, []);
 
   function mover(paso) {
     const nuevo = Math.min(Math.max(pos + paso, 0), max);
@@ -39,7 +59,7 @@ export default function Esfera({ onCambio }) {
   }
 
   return (
-    <div className="pz-base">
+    <div className={`pz-base ${saliendo ? "saliendo" : ""}`}>
       <Flecha dir="izq" onClick={() => mover(-1)} disabled={pos === 0} />
 
       <div className="pz-domo">

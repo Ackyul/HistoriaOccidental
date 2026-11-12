@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { animarSalidaEsfera } from "./Esfera";
 
 const secciones = [
   { nombre: "Home", href: "/" },
@@ -23,13 +24,41 @@ function Separador({ className = "" }) {
 
 export default function Navbar() {
   const ruta = usePathname();
+  const router = useRouter();
   const [abierto, setAbierto] = useState(false);
   const [prevRuta, setPrevRuta] = useState(ruta);
+  const [navegando, setNavegando] = useState(false);
 
-  // Cerrar menú móvil al cambiar de ruta ajustando estado durante render
+  // Cerrar menú móvil y resetear estado de navegación al cambiar de ruta
   if (prevRuta !== ruta) {
     setPrevRuta(ruta);
     setAbierto(false);
+    setNavegando(false);
+  }
+
+  function navegarA(e, href) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+      return;
+    }
+
+    if (ruta === href) {
+      e.preventDefault();
+      return;
+    }
+
+    // Si estamos en /mapa y vamos a otra sección, animar la esfera ocultándose hacia abajo
+    if (ruta === "/mapa") {
+      e.preventDefault();
+      if (navegando) return;
+      setNavegando(true);
+      setAbierto(false);
+
+      animarSalidaEsfera(() => {
+        router.push(href);
+      });
+    } else {
+      setAbierto(false);
+    }
   }
 
   // Cerrar menú móvil con Escape
@@ -64,6 +93,7 @@ export default function Navbar() {
               {s ? (
                 <Link
                   href={s.href}
+                  onClick={(e) => navegarA(e, s.href)}
                   className={`pz-nav-item ${ruta === s.href ? "activo" : ""}`}
                 >
                   {s.nombre}
@@ -138,7 +168,7 @@ export default function Navbar() {
                   <Link
                     key={s.href}
                     href={s.href}
-                    onClick={() => setAbierto(false)}
+                    onClick={(e) => navegarA(e, s.href)}
                     className={`pz-nav-mobile-link ${activo ? "activo" : ""}`}
                   >
                     <span className="pz-nav-mobile-num">
