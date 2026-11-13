@@ -5,14 +5,16 @@ export default function Home() {
   return (
     <main className="flex-1">
       <Pizarra>
-        <div className="flex h-full items-center justify-center">
-          <Link
-            href="/mapa"
-            className="border border-foreground px-6 py-3 font-serif text-lg tracking-wide transition-colors hover:bg-foreground hover:text-background"
-          >
+        <section className="pz-portada">
+          <div className="pz-estrella" />
+          <h1>
+            Comunismo <br />y <span>Maoísmo</span>
+          </h1>
+          <p>Proyecto de Historia: de las ideas de Marx a la China de Mao Zedong.</p>
+          <Link href="/mapa" className="pz-entrar">
             Pasar a la experiencia interactiva
           </Link>
-        </div>
+        </section>
       </Pizarra>
     </main>
   );
