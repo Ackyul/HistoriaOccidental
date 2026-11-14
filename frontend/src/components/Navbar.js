@@ -8,9 +8,8 @@ import { animarSalidaEsfera } from "./Esfera";
 const secciones = [
   { nombre: "Home", href: "/" },
   { nombre: "Mapa", href: "/mapa" },
-  null,
-  null,
-  null,
+  { nombre: "Línea", href: "/linea" },
+  { nombre: "Agradecimientos", href: "/agradecimientos" },
 ];
 
 function Separador({ className = "" }) {

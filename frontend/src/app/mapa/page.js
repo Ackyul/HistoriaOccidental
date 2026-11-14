@@ -1,10 +1,13 @@
-import Pizarra from "@/components/Pizarra";
-import Esfera from "@/components/Esfera";
+import MapaVista from "@/components/MapaVista";
+import { eventos } from "@/data/eventos";
+import { contorno, proyectar, ANCHO, ALTO } from "@/lib/mundo";
 
 export default function Mapa() {
+  const puntos = eventos.map((e) => ({ ...e, ...proyectar(e.lng, e.lat) }));
+
   return (
     <main className="flex-1">
-      <Pizarra base={<Esfera />} />
+      <MapaVista contorno={contorno} ancho={ANCHO} alto={ALTO} puntos={puntos} />
     </main>
   );
 }
