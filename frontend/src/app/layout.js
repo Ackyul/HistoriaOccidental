@@ -7,7 +7,7 @@ const garamond = EB_Garamond({
 });
 
 export const metadata = {
-  title: "Historia Occidental",
+  title: "Estalinismo en la Unión Soviética y Maoísmo en China",
 };
 
 export default function RootLayout({ children }) {
