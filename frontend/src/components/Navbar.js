@@ -10,7 +10,6 @@ const secciones = [
   { nombre: "Relaciones Históricas", href: "/relaciones" },
   { nombre: "Mapa", href: "/mapa" },
   { nombre: "Línea", href: "/linea" },
-  { nombre: "Agradecimientos", href: "/agradecimientos" },
 ];
 
 function Separador() {

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Pizarra from "./Pizarra";
 import Esfera from "./Esfera";
+import VentanaVideo from "./VentanaVideo";
 import { anios } from "@/data/anios";
 
 const ZOOM_MAX = 2.8;
@@ -114,6 +115,8 @@ function colocarEtiquetas(puntos, zoom, vista) {
 
 export default function MapaVista({ contorno, ancho, alto, puntos }) {
   const [actual, setActual] = useState(0);
+  const [abierto, setAbierto] = useState(null);
+  const cerrarVentana = useCallback(() => setAbierto(null), []);
 
   const anio = anios[actual];
   const activos = puntos.filter((p) => p.anio === anio);
@@ -157,7 +160,7 @@ export default function MapaVista({ contorno, ancho, alto, puntos }) {
           />
 
           {resto.map((p) => (
-            <Burbuja key={p.orden} p={p} zoom={zoom} />
+            <Burbuja key={p.orden} p={p} zoom={zoom} onAbrir={setAbierto} />
           ))}
 
           {etiquetas.map(({ p, guia }) =>
@@ -176,7 +179,7 @@ export default function MapaVista({ contorno, ancho, alto, puntos }) {
           )}
 
           {colocados.map((p) => (
-            <Burbuja key={p.orden} p={p} zoom={zoom} activa />
+            <Burbuja key={p.orden} p={p} zoom={zoom} onAbrir={setAbierto} activa />
           ))}
 
           {etiquetas.map(({ p, lineas, ax, ay, ancla }) => (
@@ -197,11 +200,13 @@ export default function MapaVista({ contorno, ancho, alto, puntos }) {
           ))}
         </g>
       </svg>
+
+      {abierto && <VentanaVideo evento={abierto} onCerrar={cerrarVentana} />}
     </Pizarra>
   );
 }
 
-function Burbuja({ p, zoom, activa }) {
+function Burbuja({ p, zoom, activa, onAbrir }) {
   const k = 1 / zoom;
 
   const circulo = activa ? (
@@ -213,14 +218,22 @@ function Burbuja({ p, zoom, activa }) {
     <circle cx={p.x} cy={p.y} r={4.5 * k} fill="#f1e7d0" stroke="#231f20" strokeWidth="1.2" vectorEffect="non-scaling-stroke" />
   );
 
-  if (!p.video) {
-    return <g className="pz-burbuja">{circulo}<title>{p.titulo}</title></g>;
-  }
-
   return (
-    <a href={p.video} className="pz-burbuja pz-burbuja-link">
+    <g
+      className="pz-burbuja"
+      role="button"
+      tabIndex={0}
+      aria-label={`${p.titulo}: abrir video`}
+      onClick={() => onAbrir(p)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onAbrir(p);
+        }
+      }}
+    >
       {circulo}
       <title>{p.titulo}</title>
-    </a>
+    </g>
   );
 }

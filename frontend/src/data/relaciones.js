@@ -10,7 +10,6 @@ export const relaciones = [
     personaje: {
       nombre: "Iósif Stalin",
       anios: "1878–1953",
-      imagen: null,
       texto:
         "Iósif Vissariónovich Dzhugashvili en Gori (actual Georgia), fue un revolucionario y político soviético que gobernó la Unión Soviética (URSS) como dictador absoluto desde mediados de la década de 1920 hasta su muerte.",
     },
@@ -26,7 +25,6 @@ export const relaciones = [
     personaje: {
       nombre: "Mao Zedong",
       anios: "1893–1976",
-      imagen: null,
       texto:
         "Conocido como el \"Gran Timonel\", fue un revolucionario, teórico marxista y estadista chino que fundó la República Popular China y la gobernó como líder máximo desde 1949 hasta su muerte.",
     },

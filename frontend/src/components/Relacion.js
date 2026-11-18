@@ -32,20 +32,10 @@ export default function Relacion({ r }) {
 
       {abierto && (
         <aside className="pz-rel-personaje">
-          <div className="pz-rel-foto">
-            {r.personaje.imagen ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={r.personaje.imagen} alt={r.personaje.nombre} />
-            ) : (
-              <span>Imagen de {r.personaje.nombre}</span>
-            )}
-          </div>
-          <div>
-            <h4>
-              Personaje histórico: {r.personaje.nombre} ({r.personaje.anios})
-            </h4>
-            <p>{r.personaje.texto}</p>
-          </div>
+          <h4>
+            Personaje histórico: {r.personaje.nombre} ({r.personaje.anios})
+          </h4>
+          <p>{r.personaje.texto}</p>
         </aside>
       )}
     </article>
