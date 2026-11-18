@@ -1,31 +1,27 @@
 import Pizarra from "@/components/Pizarra";
-import { eventos } from "@/data/eventos";
+import { lineas } from "@/data/lineas";
 
 export default function Linea() {
   return (
     <main className="flex-1">
       <Pizarra>
-        <section className="pz-linea" tabIndex={0} aria-label="Línea del tiempo">
-          <ol>
-            {eventos.map((e) => (
-              <li key={e.orden}>
-                <span className="pz-linea-n">{e.orden}</span>
-                <p className="pz-linea-anio">{e.anio}</p>
-                <h2>{e.titulo}</h2>
-                <p className="pz-linea-lugar">{e.lugar}</p>
-                {e.video ? (
-                  <a href={e.video} className="pz-linea-video">
-                    Ver video
-                  </a>
-                ) : (
-                  <span className="pz-linea-pendiente">Video pendiente</span>
-                )}
-              </li>
-            ))}
-          </ol>
+        <section className="pz-linea" tabIndex={0} aria-label="Líneas de tiempo">
+          {lineas.map((l) => (
+            <div key={l.id} className="pz-linea-grupo">
+              <h2 className="pz-linea-seccion">Línea de tiempo: {l.titulo}</h2>
+              <ol>
+                {l.hitos.map((h, i) => (
+                  <li key={h.fecha}>
+                    <span className="pz-linea-n">{i + 1}</span>
+                    <p className="pz-linea-anio">{h.fecha}</p>
+                    <h3>{h.texto}</h3>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))}
         </section>
       </Pizarra>
     </main>
   );
 }
-

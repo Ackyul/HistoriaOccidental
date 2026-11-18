@@ -7,6 +7,7 @@ import { animarSalidaEsfera } from "./Esfera";
 
 const secciones = [
   { nombre: "Home", href: "/" },
+  { nombre: "Relaciones Históricas", href: "/relaciones" },
   { nombre: "Mapa", href: "/mapa" },
   { nombre: "Línea", href: "/linea" },
   { nombre: "Agradecimientos", href: "/agradecimientos" },
