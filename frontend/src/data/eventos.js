@@ -12,7 +12,16 @@ export const eventos = [
     lng: 37.62,
     video: null,
   },
-  { orden: 2, anio: 1949, titulo: "Maoísmo", lugar: "Pekín", lat: 39.9, lng: 116.4, video: null },
+  {
+    orden: 2,
+    anio: 1949,
+    titulo: "El Maoísmo",
+    lugar: "Pekín",
+    descripcion: "Proclamación de la República Popular China en la Plaza de Tiananmén",
+    lat: 39.9,
+    lng: 116.4,
+    video: null,
+  },
 ].sort((a, b) => a.orden - b.orden);
 
 // El orden no se negocia: sin saltos ni repetidos, o la app no arranca.
