@@ -10,7 +10,7 @@ export const eventos = [
       "Tras la muerte de Lenin, la disputa entre Stalin y Trotsky por el control del partido marca el inicio del estalinismo.",
     lat: 55.76,
     lng: 37.62,
-    video: null,
+    video: "https://player.cloudinary.com/embed/?cloud_name=decklnx3p&public_id=Estalinismo_tylpck",
   },
   {
     orden: 2,
