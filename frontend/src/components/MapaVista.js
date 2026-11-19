@@ -10,7 +10,8 @@ const ZOOM_MAX = 2.8;
 const ZOOM_MIN = 1;
 const FUENTE = 15;
 const INTERLINEA = 17;
-const MAX_CARACTERES = 22;
+const MAX_TITULO = 30;
+const MAX_DESCRIPCION = 34;
 
 function encuadre(activos, ancho, alto) {
   const xs = activos.map((p) => p.x);
@@ -24,12 +25,12 @@ function encuadre(activos, ancho, alto) {
   return { zoom, cx: (x0 + x1) / 2, cy: (y0 + y1) / 2 };
 }
 
-function envolver(texto) {
+function envolver(texto, max) {
   const lineas = [];
   let actual = "";
   for (const palabra of texto.split(" ")) {
     const prueba = actual ? `${actual} ${palabra}` : palabra;
-    if (prueba.length > MAX_CARACTERES && actual) {
+    if (prueba.length > max && actual) {
       lineas.push(actual);
       actual = palabra;
     } else {
@@ -64,8 +65,12 @@ function colocarEtiquetas(puntos, zoom, vista) {
   const puestas = [];
 
   return puntos.map((p) => {
-    const lineas = [...envolver(p.titulo), `(${p.lugar}, ${p.anio})`];
-    const w = Math.max(...lineas.map((l) => l.length)) * FUENTE * 0.52 * k;
+    const lineas = [
+      ...envolver(p.titulo, MAX_TITULO).map((t) => ({ t, negrita: true })),
+      { t: `(${p.lugar}, ${p.anio})`, negrita: true },
+      ...(p.descripcion ? envolver(p.descripcion, MAX_DESCRIPCION).map((t) => ({ t })) : []),
+    ];
+    const w = Math.max(...lineas.map((l) => l.t.length * (l.negrita ? 0.58 : 0.5))) * FUENTE * k;
     const h = lineas.length * INTERLINEA * k;
 
     let mejor = null;
@@ -100,8 +105,8 @@ function colocarEtiquetas(puntos, zoom, vista) {
 
     puestas.push(mejor.rect);
 
-    const { rect, ancla } = mejor;
-    const ax = ancla === "middle" ? rect.x0 + w / 2 : ancla === "start" ? rect.x0 : rect.x1;
+    const { rect } = mejor;
+    const ax = rect.x0 + w / 2;
     const guia = mejor.nivel > 0
       ? {
           x: Math.min(Math.max(p.x, rect.x0), rect.x1),
@@ -109,7 +114,7 @@ function colocarEtiquetas(puntos, zoom, vista) {
         }
       : null;
 
-    return { p, lineas, ax, ay: rect.y0 + FUENTE * 0.8 * k, ancla, guia };
+    return { p, lineas, ax, ay: rect.y0 + FUENTE * 0.8 * k, guia };
   });
 }
 
@@ -182,18 +187,18 @@ export default function MapaVista({ contorno, ancho, alto, puntos }) {
             <Burbuja key={p.orden} p={p} zoom={zoom} onAbrir={setAbierto} activa />
           ))}
 
-          {etiquetas.map(({ p, lineas, ax, ay, ancla }) => (
+          {etiquetas.map(({ p, lineas, ax, ay }) => (
             <text
               key={`t${p.orden}`}
               x={ax}
               y={ay}
-              textAnchor={ancla}
+              textAnchor="middle"
               className="pz-mapa-titulo"
               style={{ fontSize: FUENTE * k, strokeWidth: 4 * k }}
             >
               {lineas.map((l, i) => (
-                <tspan key={i} x={ax} dy={i === 0 ? 0 : INTERLINEA * k}>
-                  {l}
+                <tspan key={i} x={ax} dy={i === 0 ? 0 : INTERLINEA * k} fontWeight={l.negrita ? 700 : 400}>
+                  {l.t}
                 </tspan>
               ))}
             </text>

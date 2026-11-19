@@ -7,7 +7,7 @@ export const eventos = [
     titulo: "Lucha por el poder en la URSS",
     lugar: "Moscú",
     descripcion:
-      "Tras la muerte de Lenin, la disputa entre Estalin y Trotsky por el control del partido marca el inicio del estalinismo",
+      "Tras la muerte de Lenin, la disputa entre Stalin y Trotsky por el control del partido marca el inicio del estalinismo.",
     lat: 55.76,
     lng: 37.62,
     video: null,
