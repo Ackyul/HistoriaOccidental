@@ -20,7 +20,7 @@ export const eventos = [
     descripcion: "Proclamación de la República Popular China en la Plaza de Tiananmén",
     lat: 39.9,
     lng: 116.4,
-    video: "/videos/Maoismo.mp4",
+    video: "https://res.cloudinary.com/decklnx3p/video/upload/Maoismo_isxsmp.mp4",
   },
 ].sort((a, b) => a.orden - b.orden);
 
