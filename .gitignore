@@ -4,3 +4,5 @@ node_modules/
 
 main.html
 *.pdf
+frontend/public/videos/
+*.mov

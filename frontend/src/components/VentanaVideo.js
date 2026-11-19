@@ -48,7 +48,7 @@ export default function VentanaVideo({ evento, onCerrar }) {
               allowFullScreen
             />
           ) : evento.video ? (
-            <video src={evento.video} controls />
+            <video src={evento.video} autoPlay playsInline />
           ) : (
             <span>El video se añadirá aquí</span>
           )}
