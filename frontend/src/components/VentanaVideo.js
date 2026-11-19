@@ -53,6 +53,8 @@ export default function VentanaVideo({ evento, onCerrar }) {
             <span>El video se añadirá aquí</span>
           )}
         </div>
+
+        {evento.descripcion && <p className="pz-ventana-desc">{evento.descripcion}</p>}
       </div>
     </div>,
     document.body,

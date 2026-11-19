@@ -64,7 +64,7 @@ function colocarEtiquetas(puntos, zoom, vista) {
   const puestas = [];
 
   return puntos.map((p) => {
-    const lineas = envolver(p.titulo);
+    const lineas = [...envolver(p.titulo), `(${p.lugar}, ${p.anio})`];
     const w = Math.max(...lineas.map((l) => l.length)) * FUENTE * 0.52 * k;
     const h = lineas.length * INTERLINEA * k;
 

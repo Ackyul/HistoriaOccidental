@@ -1,7 +1,17 @@
 // Solo hay dos videos, así que el mapa tiene dos burbujas.
 // `orden` manda sobre todo lo demás: el reloj y el mapa leen esta misma lista.
 export const eventos = [
-  { orden: 1, anio: 1924, titulo: "Estalinismo", lugar: "Moscú", lat: 55.76, lng: 37.62, video: null },
+  {
+    orden: 1,
+    anio: 1924,
+    titulo: "Lucha por el poder en la URSS",
+    lugar: "Moscú",
+    descripcion:
+      "Tras la muerte de Lenin, la disputa entre Estalin y Trotsky por el control del partido marca el inicio del estalinismo",
+    lat: 55.76,
+    lng: 37.62,
+    video: null,
+  },
   { orden: 2, anio: 1949, titulo: "Maoísmo", lugar: "Pekín", lat: 39.9, lng: 116.4, video: null },
 ].sort((a, b) => a.orden - b.orden);
 
